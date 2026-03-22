@@ -1,0 +1,56 @@
+esphome:
+  name: candi-esp-1
+
+esp32:
+  board: upesy_wroom
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "MA37WJKp/U5mG4SB3jl6E5+ZxrB/0dMn6LENyrpz+kk="
+
+ota:
+  - platform: esphome
+
+
+wifi:
+  ssid: "CANDI"
+  password: "bruteforcethis"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Candi-Esp-1 Fallback Hotspot"
+    password: "nTChn1bAUBwt"
+
+captive_portal:
+    
+# Example configuration entry
+light:
+  - platform: rgb
+    name: "RGB Test"
+    red: red_led
+    green: green_led
+    blue: blue_led
+    default_transition_length: 1s
+    restore_mode: RESTORE_DEFAULT_OFF
+
+# Example output entry
+output:
+  - platform: ledc
+    id: red_led
+    pin: 2
+    max_power: 100%
+  - platform: ledc
+    id: green_led
+    pin: 4
+    max_power: 100%
+  - platform: ledc
+    id: blue_led
+    pin: 5
+    max_power: 100%
+
