@@ -1,0 +1,57 @@
+esphome:
+  name: candi-esp-1
+
+esp32:
+  board: upesy_wroom
+  framework:
+    type: esp-idf
+    advanced:
+      minimum_chip_revision: "3.1"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "MA37WJKp/U5mG4SB3jl6E5+ZxrB/0dMn6LENyrpz+kk="
+
+ota:
+  - platform: esphome
+
+
+wifi:
+  ssid: "CANDI"
+  password: "bruteforcethis"
+  manual_ip:
+    static_ip: 192.168.202.1
+    gateway: 192.168.1.1
+    dns1: 192.168.1.1
+    subnet: 255.255.0.0
+  power_save_mode: none
+  enable_btm: true
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Candi-Esp-1 Fallback Hotspot"
+    password: "nTChn1bAUBwt"
+
+captive_portal:
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/London
+    servers:
+      - 0.pool.ntp.org
+      - 1.pool.ntp.org
+      - 2.pool.ntp.org
+
+    
+sensor:
+  - platform: dht
+    pin: 18
+    temperature: 
+      name: Temp 
+    humidity: 
+      name: Hum 
+    update_interval: 10s
