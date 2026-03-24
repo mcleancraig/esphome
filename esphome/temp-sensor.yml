@@ -10,6 +10,7 @@ esp32:
 
 # Enable logging
 logger:
+  level: DEBUG
 
 # Enable Home Assistant API
 api:
@@ -46,6 +47,13 @@ time:
       - 1.pool.ntp.org
       - 2.pool.ntp.org
 
+mqtt:
+  broker: 192.168.11.1
+  port: 1883
+  username: esphome
+  password: esphomepassword
+  client_id: candi-esp-1
+
     
 sensor:
   - platform: dht
@@ -55,3 +63,4 @@ sensor:
     humidity: 
       name: Hum 
     update_interval: 10s
+
