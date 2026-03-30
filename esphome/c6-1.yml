@@ -30,3 +30,33 @@ wifi:
 
 captive_portal:
     
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/London
+    servers:
+      - 0.pool.ntp.org
+      - 1.pool.ntp.org
+      - 2.pool.ntp.org
+
+mqtt:
+  broker: 192.168.11.1
+  port: 1883
+  username: esphome
+  password: esphomepassword
+  client_id: c6-1
+
+    
+sensor:
+  - platform: dht
+    pin: 0
+    temperature: 
+      name: Temp 
+    humidity: 
+      name: Hum 
+    update_interval: 10s
+  - platform: ultrasonic
+    trigger_pin: 3
+    echo_pin: 2
+    name: "Ultrasonic Sensor"
+    update_interval: 5s
