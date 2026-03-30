@@ -1,0 +1,57 @@
+esphome:
+  name: c6-2
+  friendly_name: C6-2
+
+esp32:
+  board: esp32-c6-devkitc-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+  level: DEBUG
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "i4GEBQQKanq/cDp7gFpTAQ8O05vxtkACNga18/tqx20="
+
+ota:
+  - platform: esphome
+    password: "7aa17843805ac83b1d5bd7a404dff28c"
+
+network:
+  enable_ipv6: true
+
+
+openthread:
+  device_type: FTD
+  channel: 25
+  network_name: "MyHome16"
+  network_key: "0xbcce1a9baabc53fd84cf7d0421bc7689"
+  pan_id: 0xb3a2
+  ext_pan_id: 0x7d089635afdc4ab0
+  pskc: "0x492b6c9ab211c5e311b352da4edc552b"
+  force_dataset: true
+text_sensor:
+  - platform: openthread_info
+    ip_address:
+      name: "Thread IP Address"
+    channel:
+      name: "Thread Channel"
+    role:
+      name: "Thread Device Role"
+    rloc16:
+      name: "Thread RLOC16"
+    ext_addr:
+      name: "Thread Extended Address"
+    eui64:
+      name: "Thread EUI64"
+    network_name:
+      name: "Thread Network Name"
+    network_key:
+      name: "Thread Network Key"
+    pan_id:
+      name: "Thread PAN ID"
+    ext_pan_id:
+      name: "Thread Extended PAN ID"
